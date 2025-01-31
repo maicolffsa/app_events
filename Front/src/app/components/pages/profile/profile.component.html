@@ -1,0 +1,53 @@
+<section class="perfil"> 
+  @if (datosPerfil) {
+    <div class="datos-edicion">
+      <div class="datos-personales">
+        <h2 class="datos-personales__title">Datos Personales</h2>
+        <p class="datos-personales__item"><strong>Nombre:</strong> {{ datosPerfil.nombre }}</p>
+        <p class="datos-personales__item"><strong>Apellidos:</strong> {{ datosPerfil.apellidos }}</p>
+        <p class="datos-personales__item"><strong>Correo Electrónico:</strong> {{ datosPerfil.correo_electronico }}</p>
+        <p class="datos-personales__item"><strong>Dirección:</strong> {{ datosPerfil.direccion }}</p>
+       
+
+      </div>
+
+      <div class="edicion-perfil">
+        <h2 class="edicion-perfil__title">Editar Perfil</h2>
+        <div class="edicion-perfil__item">
+          <div class="edicion-perfil__label-btns">
+          <label for="contrasenya" class="edicion-perfil__label">Cambiar Contraseña:</label>
+          @if (editandoContrasenya) {
+            <input type="password" id="contrasenya" [(ngModel)]="nuevosDatos.contrasenya" class="edicion-perfil__input"/>
+            <button mat-stroked-button (click)="guardarEdicion('contrasenya')" class="edicion-perfil__button">Guardar</button>
+            <button mat-stroked-button (click)="cancelarEdicion()" class="edicion-perfil__button">Cancelar</button>
+          } @else {
+            <button mat-stroked-button (click)="habilitarEdicion('contrasenya')" class="edicion-perfil__button">Editar</button>
+          }</div>
+          @if( mostrarMensajeEditadoContrasenya){
+            <div class="mensaje-exito">
+              <p>¡Editado correctamente!</p>
+            </div>
+          }
+        </div>
+
+        <div class="edicion-perfil__item">
+          <div class="edicion-perfil__label-btns">
+          <label for="direccion" class="edicion-perfil__label">Cambiar la Dirección:</label>
+          @if (editandoDireccion) {
+            <input type="text" id="direccion" [(ngModel)]="nuevosDatos.direccion" class="edicion-perfil__input"/>
+            <button mat-stroked-button (click)="guardarEdicion('direccion')" class="edicion-perfil__button">Guardar</button>
+            <button mat-stroked-button (click)="cancelarEdicion()" class="edicion-perfil__button">Cancelar</button>
+          } @else {
+            <button mat-stroked-button (click)="habilitarEdicion('direccion')" class="edicion-perfil__button">Editar</button>
+          }</div>
+          @if(mostrarMensajeEditadoDireccion){
+            <div class="mensaje-exito">
+              <p>¡Editado correctamente!</p>
+            </div>
+          }
+        </div>
+
+      </div>
+    </div>
+  }
+</section>
